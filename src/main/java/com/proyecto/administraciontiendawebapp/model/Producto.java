@@ -8,13 +8,15 @@ public class Producto {
 	private int stock;
 	private String categoria;
 	private Date fechaVencimiento;
+	private int precio;
 
-	public Producto(String codigo, String nombre, int stock, String categoria, Date fechaVencimiento) {
+	public Producto(String codigo, String nombre, int stock, String categoria, Date fechaVencimiento, int precio) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.stock = stock;
 		this.categoria = categoria;
 		this.fechaVencimiento = fechaVencimiento;
+		this.precio = precio;
 	}
 
 	public String getCodigo() {
@@ -51,6 +53,18 @@ public class Producto {
 
 	public Date getFechaVencimiento() {
 		return this.fechaVencimiento;
+	}
+
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+
+	public int getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
 	}
 
 	@Override
