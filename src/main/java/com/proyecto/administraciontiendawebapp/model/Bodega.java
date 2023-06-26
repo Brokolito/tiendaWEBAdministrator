@@ -1,7 +1,6 @@
 package com.proyecto.administraciontiendawebapp.model;
 
 import java.util.ArrayList;
-import model.Producto;
 
 public class Bodega {
 	private String codigoBodega;
