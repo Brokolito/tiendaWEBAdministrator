@@ -1,0 +1,19 @@
+package com.proyecto.administraciontiendawebapp.model;
+
+import java.util.ArrayList;
+
+public class AdministradorDeCajero extends Trabajador {
+	private ArrayList<Venta> ventas = new ArrayList<Venta>();
+
+	public AdministradorDeCajero(String rut, String nombre, String horario, String titulo, String telefono, String correo) {
+		super(rut, nombre, horario, titulo, telefono, correo,"Administrador de cajero");
+	}
+
+	public String getType() {
+		return "Administrador de cajero";
+	}
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+}
