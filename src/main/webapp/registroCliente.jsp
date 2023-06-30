@@ -17,7 +17,7 @@
           <!-- Markup example 1: input is inside label -->
           <label for="rut">
             Rut cliente
-            <input type="text" id="rut" name="rut" placeholder="Rut" required>
+            <input type="text" id="rut" name="rut" placeholder="Rut cliente" required>
           </label>
 
           <label for="nombre">
@@ -29,8 +29,12 @@
             <input type="text" id="direccion" name="direccion" placeholder="Direccion cliente" required>
           </label>
           <label for="telefono">
-            Telefono Cliente
-            <input type="text" id="telefono" name="telefono" placeholder="Telefono cliente">
+            Telefono cliente
+            <input type="text" id="telefono" name="telefono" placeholder="Telefono cliente" readonly>
+          </label>
+          <label for="correo">
+            Correo cliente
+            <input type="email" name="correo" id="correo" placeholder="Correo cliente">
           </label>
         </div>
 

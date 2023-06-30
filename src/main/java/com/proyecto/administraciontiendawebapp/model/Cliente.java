@@ -1,5 +1,11 @@
 package com.proyecto.administraciontiendawebapp.model;
 
+import com.proyecto.administraciontiendawebapp.model.data.DBConnector;
+import com.proyecto.administraciontiendawebapp.model.data.dao.ClienteDAO;
+import org.jooq.DSLContext;
+import org.jooq.impl.DSL;
+
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class Cliente {
@@ -7,16 +13,16 @@ public class Cliente {
 	private String nombre;
 	private String direccion;
 	private String telefono;
-	private Carrito carrito;
+	private String correo;
 	private ArrayList<Venta> ventas;
 
-	public Cliente(String rut, String nombre, String direccion, String telefono) {
+	public Cliente(String rut, String nombre, String direccion, String telefono,String correo) {
 		this.rut=rut;
 		this.nombre=nombre;
 		this.direccion=direccion;
 		this.telefono=telefono;
 		this.ventas=new ArrayList<>();
-		this.carrito = new Carrito();
+		this.correo=correo;
 	}
 	public String getRut() {
 		return this.rut;
@@ -42,15 +48,12 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 
-	@Override
-	public String toString() {
-		return "Cliente{" +
-				"rut='" + rut + '\'' +
-				", nombre='" + nombre + '\'' +
-				", direccion='" + direccion + '\'' +
-				", telefono='" + telefono + '\'' +
-				", carrito=" + carrito +
-				", ventas=" + ventas +
-				'}';
+	public String getCorreo() {
+		return correo;
+	}
+	public  boolean registrarCliente(){
+		Connection connection= DBConnector.connection("tienda_db","root","");
+		DSLContext query= DSL.using(connection);
+		return ClienteDAO.registarCliente(query,this);
 	}
 }
