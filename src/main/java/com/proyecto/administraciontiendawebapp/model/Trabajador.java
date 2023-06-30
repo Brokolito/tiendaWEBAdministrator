@@ -1,6 +1,13 @@
 package com.proyecto.administraciontiendawebapp.model;
 
-public abstract class Trabajador {
+import com.proyecto.administraciontiendawebapp.model.data.DBConnector;
+import com.proyecto.administraciontiendawebapp.model.data.dao.TrabajadorDAO;
+import org.jooq.DSLContext;
+import org.jooq.impl.DSL;
+
+import java.sql.Connection;
+
+public class Trabajador {
 	private String rut;
 	private String nombre;
 	private String horario;
@@ -8,8 +15,8 @@ public abstract class Trabajador {
 	private String telefono;
 	private String correo;
 	private String cargo;
-
-	public Trabajador(String rut, String nombre, String horario, String titulo, String telefono, String correo, String cargo) {
+	private String password;
+	public Trabajador(String rut, String nombre, String horario, String titulo, String telefono, String correo, String cargo,String password) {
 		this.rut = rut;
 		this.nombre = nombre;
 		this.horario = horario;
@@ -17,6 +24,7 @@ public abstract class Trabajador {
 		this.telefono = telefono;
 		this.correo = correo;
 		this.cargo = cargo;
+		this.password=password;
 	}
 
 	public String getRut() {
@@ -67,22 +75,15 @@ public abstract class Trabajador {
 		return this.correo;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+	public Trabajador login(){
+		Connection connection= DBConnector.connection("tienda_db","root","");
+		DSLContext query= DSL.using(connection);
+		return new TrabajadorDAO().login(query,this);
+	}
 	public void setCorreo(String correo) {
 		this.correo = correo;
-	}
-
-	public abstract String getType();
-
-	@Override
-	public String toString() {
-		return "Trabajador{" +
-				"rut='" + rut + '\'' +
-				", nombre='" + nombre + '\'' +
-				", horario='" + horario + '\'' +
-				", titulo='" + titulo + '\'' +
-				", telefono='" + telefono + '\'' +
-				", correo='" + correo + '\'' +
-				", cargo='" + cargo + '\'' +
-				'}';
 	}
 }
