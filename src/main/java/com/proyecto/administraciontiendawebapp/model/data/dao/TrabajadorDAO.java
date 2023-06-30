@@ -19,8 +19,29 @@ public class TrabajadorDAO {
                         trabajador.getTelefono(),trabajador.getCorreo(),trabajador.getCargo()).execute();
     }
     public static List obtenerTrabajador(DSLContext query, String columnaTabla, Object dato){
-        Result resultados = query.select().from(DSL.table("Cliente")).where(DSL.field(columnaTabla).eq(dato)).fetch();
+        Result resultados = query.select().from(DSL.table("cliente")).where(DSL.field(columnaTabla).eq(dato)).fetch();
         return obtenerListaTrabajadores(resultados);
+    }
+    public Trabajador login(DSLContext query, Trabajador trabajador) {
+        String rut = trabajador.getRut();
+        String password = trabajador.getPassword();
+        Result result = query.select().from(DSL.table("trabajador")).where(
+                    DSL.field("rut_trabajador").eq(rut)).and(DSL.field("password").eq(password)).fetch();
+        if(result.size()==0){
+            return null;
+        }
+
+
+
+        return new Trabajador(
+                result.getValue(0, "rut_trabajador").toString(),
+                result.getValue(0, "nombre_trabajador").toString(),
+                "",
+                "",
+                result.getValue(0, "telefono").toString(),
+                result.getValue(0, "correo_electronico").toString(),
+                result.getValue(0, "cod_tipo_contrato").toString(),
+                "");
     }
     private static List obtenerListaTrabajadores(Result resultados){
         List<Trabajador> trabajadores= new ArrayList<>();
@@ -32,12 +53,7 @@ public class TrabajadorDAO {
             String telefono = (String) resultados.getValue(fila,"telefono");
             String correo = (String) resultados.getValue(fila,"correo");
             String cargo = (String) resultados.getValue(fila,"cargo");
-            trabajadores.add(new Trabajador(rut, nombre, horario, titulo, telefono, correo, cargo) {
-                @Override
-                public String getType() {
-                    return null;
-                }
-            });
+            trabajadores.add(new Trabajador(rut, nombre, horario, titulo, telefono, correo, cargo,""));
         }
         return trabajadores;
     }
