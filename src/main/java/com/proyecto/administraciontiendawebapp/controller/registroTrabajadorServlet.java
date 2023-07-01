@@ -40,9 +40,13 @@ public class registroTrabajadorServlet extends HttpServlet {
                 && !correo.isEmpty() && !password.isEmpty()) {
             Trabajador trabajador=new Trabajador(rut,nombre,tipoContrato,telefono,correo,cargo,password);
             if(trabajador.registrarTrabajador()){
-
+                request.setAttribute("status","Se ha registrado correctamente el trabajador");
+            }else{
+                request.setAttribute("status","Rut ya ha sido registrado");
             }
 
+        }else{
+            request.setAttribute("status","Revise los campos");
         }
     }
 }
