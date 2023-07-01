@@ -13,11 +13,16 @@ import java.io.IOException;
 @WebServlet(name = "registroClienteServlet",value ="/registroCliente")
 public class registroClienteServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/registroCliente.jsp");
-        System.out.println("registro");
-        requestDispatcher.forward(request,response);
+        if(request.getSession().getAttribute("usuario")!=null){
+            RequestDispatcher requestDispatcher=request.getRequestDispatcher("/registroCliente.jsp");
+            requestDispatcher.forward(request,response);
+
+        }else{
+            RequestDispatcher requestDispatcher=request.getRequestDispatcher("/index.jsp");
+            requestDispatcher.forward(request,response);
+        }
     }
-    public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+    public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String rut=request.getParameter("rut");
         String nombre=request.getParameter("nombre");
         String direccion=request.getParameter("direccion");
