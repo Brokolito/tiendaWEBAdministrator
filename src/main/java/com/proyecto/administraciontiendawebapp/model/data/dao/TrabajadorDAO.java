@@ -11,12 +11,18 @@ import static org.jooq.impl.DSL.name;
 import static org.jooq.impl.DSL.table;
 
 public class TrabajadorDAO {
-    public static void registarTrabajador(DSLContext query, Trabajador trabajador){
+    public static boolean registarTrabajador(DSLContext query, Trabajador trabajador){
         Table tablaTrabajador= table(name("Trabajador"));
         Field[] columnas = tablaTrabajador.fields("rut","nombre","horario","titulo","telefono","correo","cargo");
-        query.insertInto(tablaTrabajador, columnas[0], columnas[1],columnas[2],columnas[3],columnas[4],columnas[5],columnas[6])
-                .values(trabajador.getRut(),trabajador.getNombre(),trabajador.getHorario(),trabajador.getTitulo(),
-                        trabajador.getTelefono(),trabajador.getCorreo(),trabajador.getCargo()).execute();
+        int result=0;
+        try {
+            result=query.insertInto(tablaTrabajador, columnas[0], columnas[1],columnas[2],columnas[4],columnas[5],columnas[6])
+                    .values(trabajador.getRut(),trabajador.getNombre(),trabajador.getHorario(),
+                            trabajador.getTelefono(),trabajador.getCorreo(),trabajador.getCargo()).execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result==1;
     }
     public static List obtenerTrabajador(DSLContext query, String columnaTabla, Object dato){
         Result resultados = query.select().from(DSL.table("cliente")).where(DSL.field(columnaTabla).eq(dato)).fetch();
@@ -40,8 +46,7 @@ public class TrabajadorDAO {
                 "",
                 result.getValue(0, "telefono").toString(),
                 result.getValue(0, "correo_electronico").toString(),
-                result.getValue(0, "cod_tipo_contrato").toString(),
-                "");
+                result.getValue(0, "cod_tipo_contrato").toString());
     }
     private static List obtenerListaTrabajadores(Result resultados){
         List<Trabajador> trabajadores= new ArrayList<>();
@@ -53,7 +58,7 @@ public class TrabajadorDAO {
             String telefono = (String) resultados.getValue(fila,"telefono");
             String correo = (String) resultados.getValue(fila,"correo");
             String cargo = (String) resultados.getValue(fila,"cargo");
-            trabajadores.add(new Trabajador(rut, nombre, horario, titulo, telefono, correo, cargo,""));
+            trabajadores.add(new Trabajador(rut, nombre, horario, titulo, telefono, correo, cargo));
         }
         return trabajadores;
     }

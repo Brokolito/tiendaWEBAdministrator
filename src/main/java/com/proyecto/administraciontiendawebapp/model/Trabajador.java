@@ -11,16 +11,14 @@ public class Trabajador {
 	private String rut;
 	private String nombre;
 	private String horario;
-	private String titulo;
 	private String telefono;
 	private String correo;
 	private String cargo;
 	private String password;
-	public Trabajador(String rut, String nombre, String horario, String titulo, String telefono, String correo, String cargo,String password) {
+	public Trabajador(String rut, String nombre, String horario, String telefono, String correo, String cargo,String password) {
 		this.rut = rut;
 		this.nombre = nombre;
 		this.horario = horario;
-		this.titulo = titulo;
 		this.telefono = telefono;
 		this.correo = correo;
 		this.cargo = cargo;
@@ -54,15 +52,6 @@ public class Trabajador {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-
-	public String getTitulo() {
-		return this.titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
 	public String getTelefono() {
 		return this.telefono;
 	}
@@ -85,5 +74,11 @@ public class Trabajador {
 	}
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public boolean registrarTrabajador() {
+		Connection connection= DBConnector.connection("tienda_db","root","");
+		DSLContext query= DSL.using(connection);
+		return new TrabajadorDAO().registarTrabajador(query,this);
 	}
 }

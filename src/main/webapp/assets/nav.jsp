@@ -13,7 +13,7 @@
 </head>
 <nav aria-label="breadcrumb">
   <ul>
-    <li><a href="/">Home</a></li>
+    <li><a href="administrador.jsp">Home</a></li>
     <% if(request.getSession().getAttribute("usuario")!=null){%>
       <li><a href="logout">Log out</a></li>
     <% } %>

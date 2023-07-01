@@ -30,7 +30,7 @@
           </label>
           <label for="telefono">
             Telefono cliente
-            <input type="text" id="telefono" name="telefono" placeholder="Telefono cliente" readonly>
+            <input type="text" id="telefono" name="telefono" placeholder="Telefono cliente" required>
           </label>
           <label for="correo">
             Correo cliente
