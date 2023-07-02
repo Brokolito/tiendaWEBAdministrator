@@ -14,7 +14,8 @@
         <li><a href="registroProducto">Agregar productos</a></li>
         <li><a href="registroCliente">Registrar Cliente</a></li>
         <li><a href="registroTrabajador">Registrar Trabajador</a></li>
-        <li><a href=""></a></li>
+        <li><a href="registroCategoria"> Registrar Categoria</a></li>
+        <li><a href="">Eliminar producto</a></li>
     </article>
 </section>
 </body>

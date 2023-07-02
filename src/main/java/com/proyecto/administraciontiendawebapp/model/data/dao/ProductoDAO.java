@@ -1,11 +1,14 @@
 package com.proyecto.administraciontiendawebapp.model.data.dao;
 
 import com.proyecto.administraciontiendawebapp.model.Producto;
+import com.proyecto.administraciontiendawebapp.model.data.DBConnector;
 import org.jooq.DSLContext;
 import org.jooq.Field;
 import org.jooq.Result;
 import org.jooq.Table;
 import org.jooq.impl.DSL;
+
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
@@ -39,5 +42,13 @@ public class ProductoDAO {
             });
         }
         return productos;
+    }
+    public static boolean registrarCategoria(String nombreCategoria){
+        Connection connection= DBConnector.connection("tienda_db","root","");
+        DSLContext query= DSL.using(connection);
+
+        int result=query.insertInto(DSL.table("categoria"),
+                DSL.field("cod_categoria"),DSL.field("des_categoria")).values(null,nombreCategoria).execute();
+        return result==1;
     }
 }
