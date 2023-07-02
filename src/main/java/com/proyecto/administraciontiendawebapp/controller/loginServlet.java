@@ -19,7 +19,7 @@ public class loginServlet extends HttpServlet {
         String rut=request.getParameter("rut");
         String password=request.getParameter("password");
         if(!rut.isEmpty() && !password.isEmpty()){
-            Trabajador trabajador=new Trabajador(rut,"","","","","","",password);
+            Trabajador trabajador=new Trabajador(rut,"","","","","",password);
             Trabajador trabajador1=trabajador.login();
             if(trabajador1!=null){
                 RequestDispatcher requestDispatcher=request.getRequestDispatcher("/administrador.jsp");
