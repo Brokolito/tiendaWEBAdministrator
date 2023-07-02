@@ -12,13 +12,15 @@ import static org.jooq.impl.DSL.table;
 
 public class TrabajadorDAO {
     public static boolean registarTrabajador(DSLContext query, Trabajador trabajador){
-        Table tablaTrabajador= table(name("Trabajador"));
-        Field[] columnas = tablaTrabajador.fields("rut","nombre","horario","titulo","telefono","correo","cargo");
+        Table tablaTrabajador= table(name("trabajador"));
+        Field[] columnas = tablaTrabajador.fields("rut_trabajador","nombre_trabajador","fecha_ingreso","fecha_nacimiento","cod_cargo","cod_tipo_contrato","correo_electronico","telefono","password");
         int result=0;
         try {
-            result=query.insertInto(tablaTrabajador, columnas[0], columnas[1],columnas[2],columnas[4],columnas[5],columnas[6])
-                    .values(trabajador.getRut(),trabajador.getNombre(),trabajador.getHorario(),
-                            trabajador.getTelefono(),trabajador.getCorreo(),trabajador.getCargo()).execute();
+            result=query.insertInto(tablaTrabajador, columnas[0], columnas[1],columnas[2],columnas[3],columnas[4],columnas[5],columnas[6],columnas[7],columnas[8])
+                    .values(
+                            trabajador.getRut(),trabajador.getNombre(),trabajador.getFechaEntrada(),trabajador.getFechaNacimiento(),
+                            trabajador.getCargo(),trabajador.getHorario(),
+                            trabajador.getCorreo(),trabajador.getTelefono(),trabajador.getPassword()).execute();
         }catch (Exception e){
             e.printStackTrace();
         }

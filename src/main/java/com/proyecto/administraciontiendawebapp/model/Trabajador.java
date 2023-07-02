@@ -15,6 +15,8 @@ public class Trabajador {
 	private String correo;
 	private String cargo;
 	private String password;
+	private String fechaEntrada;
+	private String fechaNacimiento;
 	public Trabajador(String rut, String nombre, String horario, String telefono, String correo, String cargo,String password) {
 		this.rut = rut;
 		this.nombre = nombre;
@@ -33,10 +35,6 @@ public class Trabajador {
 		return cargo;
 	}
 
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
-	}
-
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -49,16 +47,10 @@ public class Trabajador {
 		return this.horario;
 	}
 
-	public void setHorario(String horario) {
-		this.horario = horario;
-	}
 	public String getTelefono() {
 		return this.telefono;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
 
 	public String getCorreo() {
 		return this.correo;
@@ -67,6 +59,23 @@ public class Trabajador {
 	public String getPassword() {
 		return password;
 	}
+
+	public void setFechaEntrada(String fechaEntrada) {
+		this.fechaEntrada = fechaEntrada;
+	}
+
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public String getFechaEntrada() {
+		return fechaEntrada;
+	}
+
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
 	public Trabajador login(){
 		Connection connection= DBConnector.connection("tienda_db","root","");
 		DSLContext query= DSL.using(connection);

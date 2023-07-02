@@ -20,6 +20,7 @@
                     <input placeholder="Nombre trabajador" name="nombre" type="text" id="nombre" required>
                 </label>
                 <label for="fechaNacimiento">
+                    Fecha nacimiento
                     <input name="fechaNacimiento" type="date" id="fechaNacimiento" required>
                 </label>
                 <label for="fechaIngreso">
@@ -31,8 +32,8 @@
                     <select name="cargo" id="cargo" required>
                         <option value="0" selected>Escoja una opcion</option>
                         <option value="1">Administrador de caja</option>
-                        <option value="2">Jefe de Local</option>
-                        <option value="3">Jefe de Bodega</option>
+                        <option value="2">Jefe de local</option>
+                        <option value="3">Jefe de bodega</option>
                     </select>
                 </label>
                 <label for="tipoContrato">
