@@ -1,5 +1,6 @@
 package com.proyecto.administraciontiendawebapp.controller;
 
+import com.proyecto.administraciontiendawebapp.model.Bodega;
 import com.proyecto.administraciontiendawebapp.model.Trabajador;
 import com.proyecto.administraciontiendawebapp.model.data.dao.TrabajadorDAO;
 import jakarta.servlet.RequestDispatcher;
@@ -25,5 +26,17 @@ public class registroBodegaServlet extends HttpServlet {
         requestDispatcher.forward(request,response);
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
+        String direccionBodega=request.getParameter("direccionBodega");
+        String rutEncargado=request.getParameter("trabajadorEncargado");
+        if(!direccionBodega.isEmpty() && !rutEncargado.isEmpty()){
+            Bodega bodega=new Bodega("",direccionBodega,"",rutEncargado);
+            if(bodega.registrarBodega()){
+                request.setAttribute("status","Se ha registrado correctamente");
+            }else {
+                request.setAttribute("status","No se ha podido registrar correctamente");
+            }
+        }else{
+            request.setAttribute("status","Rellene correctamente todos los campos");
+        }
     }
 }

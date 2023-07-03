@@ -12,12 +12,13 @@ import static org.jooq.impl.DSL.name;
 import static org.jooq.impl.DSL.table;
 
 public class BodegaDAO {
-    public static void registarBodega(DSLContext query, Bodega bodega){
-        Table tablaBodega= table(name("Bodega"));
-        Field[] columnas = tablaBodega.fields("codigo_bodega","direccion","horario","rut_trabajador");
-        query.insertInto(tablaBodega, columnas[0], columnas[1],columnas[2], columnas[3])
-                .values(bodega.getCodigoBodega(),bodega.getDireccion(),bodega.getHorario()
+    public static boolean registarBodega(DSLContext query, Bodega bodega){
+        Table tablaBodega= table(name("bodega"));
+        Field[] columnas = tablaBodega.fields("cod_bodega","direccion_bodega","rut_trabajador_encargado");
+        int result=query.insertInto(tablaBodega, columnas[0], columnas[1],columnas[2])
+                .values(null,bodega.getDireccion()
                 ,bodega.getRutJefeDeBodega()).execute();
+        return result==1;
     }
 
     public static List obtenerBodega(DSLContext query, String columnaTabla, Object dato){

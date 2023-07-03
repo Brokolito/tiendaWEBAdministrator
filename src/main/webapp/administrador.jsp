@@ -12,10 +12,11 @@
 <section>
     <article>
         <li><a href="registroProducto">Agregar productos</a></li>
-        <li><a href="registroCliente">Registrar Cliente</a></li>
-        <li><a href="registroTrabajador">Registrar Trabajador</a></li>
-        <li><a href="registroCategoria"> Registrar Categoria</a></li>
+        <li><a href="registroCliente">Registrar cliente</a></li>
+        <li><a href="registroTrabajador">Registrar trabajador</a></li>
+        <li><a href="registroCategoria"> Registrar categoria</a></li>
         <li><a href="registroProducto">Registrar producto</a></li>
+        <li><a href="registroBodega">Registrar bodega</a></li>
     </article>
 </section>
 </body>
