@@ -3,9 +3,6 @@ package com.proyecto.administraciontiendawebapp.model.data;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 import java.sql.Connection;
-import static org.jooq.impl.DSL.primaryKey;
-import static org.jooq.impl.SQLDataType.INTEGER;
-import static org.jooq.impl.SQLDataType.VARCHAR;
 
 public class DBGenerator {
     //Metodo inicial para crear una base de datos y sus respectivas tablas en caso de que no exista

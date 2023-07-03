@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import utils.ValidarRut;
 
 import java.io.IOException;
 
@@ -29,15 +30,19 @@ public class registroClienteServlet extends HttpServlet {
         String telefono=request.getParameter("telefono");
         String correo=request.getParameter("correo");
         RequestDispatcher requestDispatcher=request.getRequestDispatcher("/registroCliente.jsp");
-        if(!rut.isEmpty() && !nombre.isEmpty() && !direccion.isEmpty() && !telefono.isEmpty() && !correo.isEmpty()){
-            Cliente cliente=new Cliente(rut,nombre,direccion,telefono,correo);
-            if(cliente.registrarCliente()){
-                request.setAttribute("status","Se ha registrado existosamente el nuevo cliente");
-            }else{
-                request.setAttribute("status","El rut ya ha sido registrado");
+        if(ValidarRut.validarDigito(rut)) {
+            if (!rut.isEmpty() && !nombre.isEmpty() && !direccion.isEmpty() && !telefono.isEmpty() && !correo.isEmpty()) {
+                Cliente cliente = new Cliente(rut, nombre, direccion, telefono, correo);
+                if (cliente.registrarCliente()) {
+                    request.setAttribute("status", "Se ha registrado existosamente el nuevo cliente");
+                } else {
+                    request.setAttribute("status", "El rut ya ha sido registrado");
+                }
+            } else {
+                request.setAttribute("status", "Complete correctamente todos los campos");
             }
         }else{
-            request.setAttribute("status","Complete correctamente todos los campos");
+            request.setAttribute("status", "Rut inválido, intente nuevamente");
         }
         requestDispatcher.forward(request,response);
     }
