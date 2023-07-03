@@ -1,5 +1,11 @@
 package com.proyecto.administraciontiendawebapp.model;
 
+import com.proyecto.administraciontiendawebapp.model.data.DBConnector;
+import com.proyecto.administraciontiendawebapp.model.data.dao.ProductoDAO;
+import org.jooq.DSLContext;
+import org.jooq.impl.DSL;
+
+import java.sql.Connection;
 import java.sql.Date;
 
 public class Producto {
@@ -66,6 +72,10 @@ public class Producto {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-
+	public boolean registraProducto(String rutTrabajadorRegistra){
+		Connection connection= DBConnector.connection("tienda_db","root","");
+		DSLContext query= DSL.using(connection);
+		return ProductoDAO.registarArticulo(query,this,rutTrabajadorRegistra);
+	}
 
 }
