@@ -26,9 +26,9 @@ public class TrabajadorDAO {
         }
         return result==1;
     }
-    public static List obtenerTrabajador(DSLContext query, String columnaTabla, Object dato){
-        Result resultados = query.select().from(DSL.table("cliente")).where(DSL.field(columnaTabla).eq(dato)).fetch();
-        return obtenerListaTrabajadores(resultados);
+    public static Result obtenerTrabajador(DSLContext query, String columnaTabla, Object dato){
+        Result resultados = query.select().from(DSL.table("trabajador")).where(DSL.field(columnaTabla).eq(dato)).fetch();
+        return resultados;
     }
     public Trabajador login(DSLContext query, Trabajador trabajador) {
         String rut = trabajador.getRut();
@@ -50,18 +50,5 @@ public class TrabajadorDAO {
                 result.getValue(0, "correo_electronico").toString(),
                 result.getValue(0, "cod_tipo_contrato").toString());
     }
-    private static List obtenerListaTrabajadores(Result resultados){
-        List<Trabajador> trabajadores= new ArrayList<>();
-        for(int fila=0; fila<resultados.size();fila++){
-            String rut = (String) resultados.getValue(fila,"rut");
-            String nombre = (String) resultados.getValue(fila,"nombre");
-            String horario = (String) resultados.getValue(fila,"horario");
-            String titulo = (String) resultados.getValue(fila,"titulo");
-            String telefono = (String) resultados.getValue(fila,"telefono");
-            String correo = (String) resultados.getValue(fila,"correo");
-            String cargo = (String) resultados.getValue(fila,"cargo");
-            trabajadores.add(new Trabajador(rut, nombre, horario, titulo, telefono, correo, cargo));
-        }
-        return trabajadores;
-    }
+
 }

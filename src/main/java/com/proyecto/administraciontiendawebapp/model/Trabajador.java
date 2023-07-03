@@ -3,9 +3,11 @@ package com.proyecto.administraciontiendawebapp.model;
 import com.proyecto.administraciontiendawebapp.model.data.DBConnector;
 import com.proyecto.administraciontiendawebapp.model.data.dao.TrabajadorDAO;
 import org.jooq.DSLContext;
+import org.jooq.Result;
 import org.jooq.impl.DSL;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public class Trabajador {
 	private String rut;
@@ -89,5 +91,21 @@ public class Trabajador {
 		Connection connection= DBConnector.connection("tienda_db","root","");
 		DSLContext query= DSL.using(connection);
 		return new TrabajadorDAO().registarTrabajador(query,this);
+	}
+	public Result obtenerTrabajador(String dato){
+		Connection connection= DBConnector.connection("tienda_db","root","");
+		DSLContext query= DSL.using(connection);
+		Object atributo;
+		if(dato=="rut_trabajador"){
+			atributo=rut;
+		}else if(dato=="nombre_trabajador"){
+			atributo=nombre;
+		} else if (dato=="cod_cargo") {
+			atributo=cargo;
+		}else{
+			atributo="";
+		}
+
+		return TrabajadorDAO.obtenerTrabajador(query,dato,atributo);
 	}
 }
