@@ -28,6 +28,9 @@ public class registroBodegaServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
         String direccionBodega=request.getParameter("direccionBodega");
         String rutEncargado=request.getParameter("trabajadorEncargado");
+        Trabajador trabajador=new Trabajador("","","","","","3","");
+        request.setAttribute("trabajadores",trabajador.obtenerTrabajador("cod_cargo"));
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/registroBodega.jsp");
         if(!direccionBodega.isEmpty() && !rutEncargado.isEmpty()){
             Bodega bodega=new Bodega("",direccionBodega,"",rutEncargado);
             if(bodega.registrarBodega()){
@@ -38,5 +41,7 @@ public class registroBodegaServlet extends HttpServlet {
         }else{
             request.setAttribute("status","Rellene correctamente todos los campos");
         }
+        requestDispatcher.forward(request,response);
     }
+
 }
