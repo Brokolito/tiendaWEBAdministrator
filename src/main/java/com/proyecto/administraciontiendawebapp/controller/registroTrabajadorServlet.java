@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import utils.ValidarRut;
 
 import java.io.IOException;
 
@@ -37,19 +38,24 @@ public class registroTrabajadorServlet extends HttpServlet {
                 || !(request.getParameter("telefono").toString().length()<=12))?"":request.getParameter("telefono").toString()
         );
         String tipoContrato=request.getParameter("tipoContrato").toString();
-        if(!rut.isEmpty() && !nombre.isEmpty() && !fechaNacimiento.isEmpty() && !fechaIngreso.isEmpty() && !cargo.isEmpty()
-                && !correo.isEmpty() && !password.isEmpty()) {
-            Trabajador trabajador=new Trabajador(rut,nombre,tipoContrato,telefono,correo,cargo,password);
-            trabajador.setFechaEntrada(fechaIngreso);
-            trabajador.setFechaNacimiento(fechaNacimiento);
-            if(trabajador.registrarTrabajador()){
-                request.setAttribute("status","Se ha registrado correctamente el trabajador");
-            }else{
-                request.setAttribute("status","Rut ya ha sido registrado");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/registroTrabajador.jsp");
+        if(ValidarRut.validarDigito(rut)){
+            if(!rut.isEmpty() && !nombre.isEmpty() && !fechaNacimiento.isEmpty() && !fechaIngreso.isEmpty() && !cargo.isEmpty()
+                    && !correo.isEmpty() && !password.isEmpty()) {
+                Trabajador trabajador=new Trabajador(rut,nombre,tipoContrato,telefono,correo,cargo,password);
+                trabajador.setFechaEntrada(fechaIngreso);
+                trabajador.setFechaNacimiento(fechaNacimiento);
+                if(trabajador.registrarTrabajador()){
+                    request.setAttribute("status","Se ha registrado correctamente el trabajador");
+                }else{
+                    request.setAttribute("status","Rut ya ha sido registrado");
+                }
+            }else {
+                request.setAttribute("status", "Revise los campos");
             }
-
         }else{
-            request.setAttribute("status","Revise los campos");
+            request.setAttribute("status", "Rut inválido, intente nuevamente");
         }
+        requestDispatcher.forward(request,response);
     }
 }

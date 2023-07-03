@@ -8,6 +8,7 @@
 <%@include file="assets/nav.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
+<h2>${status}</h2>
     <section>
         <article>
             <form action="registroCategoria" method="post">
