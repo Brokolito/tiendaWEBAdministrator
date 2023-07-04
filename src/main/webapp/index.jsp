@@ -12,6 +12,7 @@
     <title>Title</title>
 </head>
 <main class="container">
+    <h2>${status}</h2>
 <body >
 <article>
     <form method="post" action="login">
