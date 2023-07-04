@@ -34,6 +34,10 @@ public class cambioInformacionServlet extends HttpServlet {
             Trabajador trabajador=(Trabajador)  request.getSession().getAttribute("usuario");
             trabajador.setCorreo(correoNuevo);
             trabajador.setTelefono(telefonoNuevo);
+            String correoAntiguo=trabajador.getCorreo();
+            String telefonoAntiguo=trabajador.getTelefono();
+            request.setAttribute("correoAntiguo",correoAntiguo);
+            request.setAttribute("telefonoAntiguo",telefonoAntiguo);
             if(trabajador.updateInformacion()){
                 request.getSession().setAttribute("usuario",trabajador);
                 request.setAttribute("status","Se ha hecho los cambios correctamente");
