@@ -7,17 +7,29 @@
 --%>
 <%@include file="assets/nav.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<body>
-<h1>Administrador</h1>
-<section>
+
+<section class="grid container">
+
+        <article>
+            <aside>
+                <nav>
+                    <ul>
+                        <li>Productos</li>
+                        <li><a href="registroProducto">Agregar productos</a></li>
+                        <li><a href="registroProducto">Registrar existensia</a></li>
+                        <li><a href="registroCategoria"> Registrar categoria</a></li>
+                        <li>Personas</li>
+                        <li><a href="registroCliente">Registrar cliente</a></li>
+                        <li><a href="registroTrabajador">Registrar trabajador</a></li>
+                        <li>Bodega</li>
+                        <li><a href="registroBodega">Registrar bodega</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </article>
     <article>
-        <li><a href="registroProducto">Agregar productos</a></li>
-        <li><a href="registroCliente">Registrar cliente</a></li>
-        <li><a href="registroTrabajador">Registrar trabajador</a></li>
-        <li><a href="registroCategoria"> Registrar categoria</a></li>
-        <li><a href="registroProducto">Registrar producto</a></li>
-        <li><a href="registroBodega">Registrar bodega</a></li>
+        <h1>Bienvenido al administrador de tarea</h1>
     </article>
 </section>
-</body>
+
 </html>

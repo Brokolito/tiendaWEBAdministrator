@@ -7,6 +7,7 @@
 --%>
 <%@include file="assets/nav.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<main class="container">
 <body>
     <section>
         <article>
@@ -61,9 +62,7 @@
                 <button type="submit">Submit</button>
             </form>
         </article>
-        <article>
-            <a href="">Registrar Horario</a>
-        </article>
     </section>
 </body>
+</main>
 </html>

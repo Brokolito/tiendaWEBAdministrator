@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <title>Title</title>
 </head>
+<main class="container">
 <body >
 <article>
     <form method="post" action="login">
@@ -40,4 +41,5 @@
     </form>
 </article>
 </body>
+</main>>
 </html>

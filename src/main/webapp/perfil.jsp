@@ -7,14 +7,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="assets/nav.jsp"%>
+<main class="container">
 <body>
 <section>
-  <article>
-    <h1>¡Hola,bienvenido a tu perfil ${nombreTrabajador}!</h1>
-    <p>Aca puedes editar la informacion personal que desees</p>
-    <a href="">Cambiar contraseña</a>
-    <a href="">Cambiar informacion </a>
-  </article>
+
+    <article>
+      <h1>¡Hola,bienvenido a tu perfil ${nombreTrabajador}!</h1>
+      <p>Aca puedes editar la informacion personal que desees</p>
+      <a href="">Cambiar contraseña</a>
+      <a href="">Cambiar informacion personal </a>
+    </article>
+
 </section>
 </body>
+</main>
 </html>
