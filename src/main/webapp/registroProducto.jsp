@@ -11,6 +11,7 @@
 
 
 <body>
+<h2>${status}</h2>
     <section>
         <article>
             <form action="registroProducto" method="post">

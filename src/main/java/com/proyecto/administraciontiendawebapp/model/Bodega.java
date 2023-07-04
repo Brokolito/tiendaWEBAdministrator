@@ -1,5 +1,11 @@
 package com.proyecto.administraciontiendawebapp.model;
 
+import com.proyecto.administraciontiendawebapp.model.data.dao.BodegaDAO;
+import com.proyecto.administraciontiendawebapp.model.data.DBConnector;
+import org.jooq.DSLContext;
+import org.jooq.impl.DSL;
+
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class Bodega {
@@ -51,4 +57,5 @@ public class Bodega {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
+
 }
