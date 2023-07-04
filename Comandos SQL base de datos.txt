@@ -1,0 +1,167 @@
+//CTRL+R Para sacar flecha
+
+create database tienda_db;
+use tienda_db;
+
+//Se crean aca las tablas
+
+create table cargo(
+     cod_cargo int not null auto_increment primary key,
+     des_cargo varchar(45) not null );
+create table tipo_contrato(
+     cod_tipo_contrato int not null auto_increment primary key,
+     des_tipo_contrato varchar(45) not null);
+create table trabajador(
+     rut_trabajador varchar(12) not null primary key,
+     nombre_trabajador varchar(70) not null,
+     fecha_ingreso date not null,
+     fecha_nacimiento date not null,
+     cod_cargo int not null,
+     cod_tipo_contrato int not null,
+     correo_electronico varchar(256) not null,
+     telefono varchar(12) not null);
+create table bodega(
+     cod_bodega int not null auto_increment primary key,
+     direccion_bodega varchar(104) not null,
+     rut_trabajador_encargado varchar(12) not null );
+create table dia(
+     cod_dia int not null auto_increment primary key,
+     des_dia varchar(45) not null);
+create table horario(
+     horario_inicio time not null,
+     horario_termino time not null,
+     cod_dia int not null,
+     cod_bodega int not null,
+     primary key(horario_inicio,horario_termino,cod_dia,cod_bodega));
+create table fecha_vencimiento(
+     fecha_vencimiento date not null,
+     cantidad int not null,
+     cod_producto int not null,
+     cod_bodega int not null,
+     rut_trabajador_registra varchar(12) not null,
+     primary key(fecha_vencimiento,cod_producto,cod_bodega));
+create table producto(
+     cod_producto int not null auto_increment primary key,
+     nombre_producto varchar(70) not null,
+     cod_categoria int not null,
+     rut_trabajador_registra varchar(12) not null);
+create table garantia(
+     tiempo_garantia int not null,
+     cod_producto int not null,
+     cod_tipo_garantia int not null,
+     primary key(tiempo_garantia,cod_producto,cod_tipo_garantia));
+create table tipo_garantia(
+     cod_tipo_garantia int not null auto_increment primary key,
+     des_tipo_garantia varchar(45) not null);
+create table venta_producto(
+     cod_venta int not null,
+     cod_producto int not null,
+     cantidad int not null,
+     primary key(cod_venta,cod_producto));
+create table venta(
+     cod_venta int not null auto_increment primary key,
+     rut_trabajador varchar(12) not null,
+     fecha_realizada date not null,
+    rut_cliente varchar(12) not null,
+     cod_estado_venta int not null,
+     cod_metodo_pago int not null);
+create table metodo_pago(
+     cod_metodo_pago int not null auto_increment primary key,
+     des_metodo_pago varchar(45) not null);
+create table estado_venta(
+     cod_estado_venta int not null auto_increment primary key,
+     des_estado_venta varchar(45) not null);
+create table cliente(
+     rut_cliente varchar(12) not null primary key,
+     nombre_cliente varchar(70) not null,
+     direccion varchar(104) not null,
+     telefono varchar(12) not null,
+     correo_electronico varchar(256) not null);
+create table categoria(
+     cod_categoria int not null auto_increment primary key,
+     des_categoria varchar(45) not null);
+alter table trabajador add
+     constraint fk_cargo
+     foreign key(cod_cargo)
+     references cargo(cod_cargo);
+alter table trabajador add
+     constraint fk_tipo_contrato
+     foreign key(cod_tipo_contrato)
+     references tipo_contrato(cod_tipo_contrato);
+ alter table bodega add
+    constraint fk_rut_trabajador_encargado
+     foreign key(rut_trabajador_encargado)
+     references trabajador(rut_trabajador);
+alter table horario add
+     constraint fk_dia
+     foreign key(cod_dia)
+     references dia(cod_dia);
+alter table horario add
+     constraint  fk_bodega
+     foreign key(cod_bodega)
+     references bodega(cod_bodega);
+alter table producto add
+     constraint fk_categoria
+     foreign key(cod_categoria)
+     references categoria(cod_categoria);
+alter table producto add
+     constraint fk_rut_trabajador_registra
+     foreign key(rut_trabajador_registra)
+     references trabajador(rut_trabajador);
+alter table venta_producto add
+     constraint fk_venta
+     foreign key(cod_venta)
+     references venta(cod_venta);
+alter table venta_producto add
+     constraint fk_producto
+     foreign key(cod_producto)
+     references producto(cod_producto);
+ alter table garantia add
+     constraint fk_cod_producto
+     foreign key(cod_producto)
+     references producto(cod_producto);
+alter table garantia add
+     constraint fk_tipo_garantia
+     foreign key(cod_tipo_garantia)
+     references tipo_garantia(cod_tipo_garantia);
+ALTER TABLE `fecha_vencimiento` ADD 
+       FOREIGN KEY (`cod_producto`) 
+       REFERENCES `producto`(`cod_producto`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+alter table fecha_vencimiento add
+     foreign key(cod_bodega)
+     references bodega(cod_bodega);
+
+alter table fecha_vencimiento add
+     foreign key(rut_trabajador_registra)
+     references trabajador(rut_trabajador);
+alter table venta add
+     foreign key(rut_trabajador)
+     references trabajador(rut_trabajador);
+alter table venta add
+     foreign key(rut_cliente)
+     references cliente(rut_cliente);
+alter table venta add
+     foreign key(cod_estado_venta)
+     references estado_venta(cod_estado_venta);
+alter table venta add
+     foreign key(cod_metodo_pago)
+     references metodo_pago(cod_metodo_pago);
+ALTER TABLE `trabajador` ADD 
+     `password` VARCHAR(12) NOT NULL AFTER `telefono`;
+
+ALTER TABLE `fecha_vencimiento`DROP PRIMARY KEY,ADD PRIMARY KEY(`fecha_vencimiento`); 
+ALTER TABLE `fecha_vencimiento` DROP PRIMARY KEY; 
+ALTER TABLE `fecha_vencimiento` CHANGE `fecha_vencimiento` `fecha_vencimiento` DATE NULL;
+RENAME TABLE `tienda_db`.`fecha_vencimiento` TO `tienda_db`.`producto_almacenado`;
+ALTER TABLE `producto_almacenado` ADD `cod_producto_almacenado` INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`cod_producto_almacenado`);
+insert into tipo_contrato(cod_tipo_contrato,des_tipo_contrato) values ("1","Definido"),("2","Indefinido"),("3","Faena/Obra"),("4","Part-Time"),("5","Temporada");
+INSERT INTO cargo(cod_cargo,des_cargo) values("1","Administrador de caja"),("2","Jefe de local"),("3","Jefe de bodega");
+INSERT INTO estado_venta(cod_estado_venta,des_estado_venta) values("1","Pendiente"),("2","En proceso"),("3","Enviado"),("4","Entregado"),("5","Cancelado"),("6","Reembolsado");
+INSERT INTO dia(cod_dia,des_dia) values ("1","Lunes"),("2","Martes"),("3","Miercoles"),
+("4","Jueves"),("5","Viernes"),("6","Sabado"),("7","Domingo");
+insert into tipo_garantia(cod_tipo_garantia,des_tipo_garantia) values ("1","Legal minima"),("2","Garantia del fabricante"),("3","Garantia extendida");
+INSERT INTO metodo_pago(cod_metodo_pago,des_metodo_pago) values ("1","Efectivo"),
+("2","Tarjeta debito"),("3","Tarjeta credito"),("4","Transferencia bancaria"),
+("5","Pago en linea"),("6","Cheque"),("7","Pago movil");
+ALTER TABLE `producto` ADD `precio` INT NOT NULL AFTER `cod_categoria`;
+INSERT INTO `trabajador` (`rut_trabajador`, `nombre_trabajador`, `fecha_ingreso`, `fecha_nacimiento`, `cod_cargo`, `cod_tipo_contrato`, `correo_electronico`, `telefono`, `password`) VALUES ('15943970‑4', 'Juanin', '2023-06-07', '1980-08-21', '2', '2', 'admin@ekisdee.cl', '+5698765432', 'admin1234')
