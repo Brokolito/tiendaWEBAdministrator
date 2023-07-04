@@ -14,7 +14,7 @@
     <article>
       <h1>¡Hola,bienvenido a tu perfil ${nombreTrabajador}!</h1>
       <p>Aca puedes editar la informacion personal que desees</p>
-      <a href="">Cambiar contraseña</a>
+      <a href="cambioPassword">Cambiar contraseña</a>
       <a href="">Cambiar informacion personal </a>
     </article>
 
