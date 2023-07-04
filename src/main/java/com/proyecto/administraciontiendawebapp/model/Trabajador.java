@@ -62,6 +62,14 @@ public class Trabajador {
 		return password;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	public void setFechaEntrada(String fechaEntrada) {
 		this.fechaEntrada = fechaEntrada;
 	}
@@ -107,5 +115,10 @@ public class Trabajador {
 		}
 
 		return TrabajadorDAO.obtenerTrabajador(query,dato,atributo);
+	}
+	public boolean updateInformacion(){
+		Connection connection= DBConnector.connection("tienda_db","root","");
+		DSLContext query= DSL.using(connection);
+		return TrabajadorDAO.updateInformacion(query,this);
 	}
 }
