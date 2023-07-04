@@ -21,9 +21,9 @@ public class BodegaDAO {
         return result==1;
     }
 
-    public static List obtenerBodega(DSLContext query, String columnaTabla, Object dato){
-        Result resultados = query.select().from(DSL.table("Bodega")).where(DSL.field(columnaTabla).eq(dato)).fetch();
-        return obtenerListaBodegas(resultados);
+    public static Result obtenerBodega(DSLContext query){
+        Result resultados = query.select().from(DSL.table("Bodega")).fetch();
+        return resultados;
     }
     private static List obtenerListaBodegas(Result resultados){
         List<Bodega> bodegas= new ArrayList<>();
@@ -35,5 +35,35 @@ public class BodegaDAO {
             bodegas.add(new Bodega(codigoBodega,direccion,horario,rutJefeBodega));
         }
         return bodegas;
+    }
+
+    public static boolean registrarHorario(DSLContext query, Bodega bodega) {
+        String [] horario=bodega.getHorario().split("-");
+        int result=0;
+        int diaInicio=Integer.parseInt(horario[0]);
+        int diaFinal=Integer.parseInt(horario[1]);
+        int cantidadDia=diaFinal-diaInicio;
+        System.out.println(cantidadDia);
+        try {
+            if(cantidadDia!= 0){
+                for (int i=diaInicio;i <=diaFinal; i++) {
+                    System.out.println(i);
+                    result=query.insertInto(DSL.table("horario"),
+                            DSL.field("horario_inicio"),DSL.field("horario_termino"),
+                            DSL.field("cod_dia"),DSL.field("cod_bodega")).values(
+                                    horario[2],horario[3],i,bodega.getCodigoBodega()
+                    ).execute();
+                }
+            }else{
+                result=query.insertInto(DSL.table("horario"),
+                        DSL.field("horario_inicio"),DSL.field("horario_termino"),
+                        DSL.field("cod_dia"),DSL.field("cod_bodega")).values(
+                        horario[2],horario[3],diaInicio,bodega.getCodigoBodega()
+                ).execute();
+            }
+        }catch (Exception e){
+            e.printStackTrace();;
+        }
+        return result==1;
     }
 }

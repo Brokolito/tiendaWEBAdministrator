@@ -29,6 +29,7 @@ ${status}
         </label>
         <button type="submit">Submit</button>
       </form>
+      <a href="registroHorarioBodega">Registrar horario de bodega</a>
     </article>
   </section>
 </body>

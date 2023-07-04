@@ -8,8 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="assets/nav.jsp"%>
 <body>
+<h2>${status}</h2>
   <article>
-    <form action="" method="post">
+    <form action="registroHorarioBodega" method="post">
+      <label for="bodega">
+        <select name="bodega" id="bodega">
+          <option value="0">Selecciona una bodega</option>
+          <c:forEach items="${bodegas}" var="bodega">
+            <option value="${bodega.getValue("cod_bodega")}">
+              ${bodega.getValue("direccion_bodega")}
+            </option>
+          </c:forEach>
+        </select>
+      </label>
       <label for="diaComienzo">
         Desde:
         <select name="diaComienzo" id="diaComienzo">
@@ -41,7 +52,8 @@
         <input id="horaComienzo" type="time" name="horaComienzo" required>
       </label>
       <label for="horaTermino">
-        <input name="horaTermino" id="horaTermino" type="text" required>
+        Hasta:
+        <input name="horaTermino" id="horaTermino" type="time" required>
       </label>
       <button type="submit">Submit</button>
     </form>
