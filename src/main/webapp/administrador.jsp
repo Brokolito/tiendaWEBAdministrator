@@ -16,6 +16,7 @@
         <li><a href="registroTrabajador">Registrar Trabajador</a></li>
         <li><a href="registroCategoria"> Registrar Categoria</a></li>
         <li><a href="registroProducto">Registrar producto</a></li>
+        <li><a href="registroProductoBodega">Registrar producto en bodega</a></li>
     </article>
 </section>
 </body>

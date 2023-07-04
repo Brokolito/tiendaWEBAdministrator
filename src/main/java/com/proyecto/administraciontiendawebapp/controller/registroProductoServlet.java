@@ -25,12 +25,13 @@ public class registroProductoServlet extends HttpServlet {
         }
         requestDispatcher.forward(request,response);
     }
-    public void doPost(HttpServletRequest request,HttpServletResponse httpServletResponse) throws IOException,ServletException{
+    public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException{
         Trabajador trabajador= (Trabajador) request.getSession().getAttribute("usuario");
         String rut=trabajador.getRut();
         request.setAttribute("categorias",ProductoDAO.obtenerCategorias());
         String nombreProducto= request.getParameter("nombreProducto");
         String categoriaProducto=request.getParameter("categoria");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/registroProducto.jsp");
         int precioProducto=Integer.parseInt(
                 (!request.getParameter("precio").matches("[0-9]+")
                         || request.getParameter("precio").isEmpty()) ?
@@ -48,8 +49,8 @@ public class registroProductoServlet extends HttpServlet {
                 request.setAttribute("status","Ha ocurrido un error");
             }
         }else {
-
+            request.setAttribute("status","Rellene todos los campos");
         }
-
+        requestDispatcher.forward(request,response);
     }
 }

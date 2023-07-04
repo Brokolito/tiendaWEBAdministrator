@@ -27,25 +27,11 @@ public class ProductoDAO {
                         ,producto.getPrecio(),rutTrabajadorRegistra).execute();
         return result==1;
     }
-
-    public static List obtenerArticulo(DSLContext query, String columnaTabla, Object dato){
-        Result resultados = query.select().from(DSL.table("Articulo")).where(DSL.field(columnaTabla).eq(dato)).fetch();
-        return obtenerListaArticulos(resultados);
-    }
-    private static List obtenerListaArticulos(Result resultados){
-        List<Producto> productos= new ArrayList<>();
-        for(int fila=0; fila<resultados.size();fila++){
-            String codigo = (String) resultados.getValue(fila,"codigo");
-            String nombre = (String) resultados.getValue(fila,"nombre");
-            int stock = (Integer) resultados.getValue(fila, "stock");
-            String categoria = (String) resultados.getValue(fila,"categoria");
-            Date fechaVencimiento = (Date) resultados.getValue(fila,"fecha_vencimiento");
-            int precio = (Integer) resultados.getValue(fila, "precio");
-
-            productos.add(new Producto(codigo,nombre,stock,categoria,fechaVencimiento,precio) {
-            });
-        }
-        return productos;
+    public static Producto obtenerProducto(String columnaTabla, Object dato){
+        Connection connection= DBConnector.connection("tienda_db","root","");
+        DSLContext query= DSL.using(connection);
+        Producto producto = (Producto) query.select().from(DSL.table("Articulo")).where(DSL.field(columnaTabla).eq(dato)).fetch();
+        return producto;
     }
     public static boolean registrarCategoria(String nombreCategoria){
         Connection connection= DBConnector.connection("tienda_db","root","");
@@ -59,5 +45,10 @@ public class ProductoDAO {
         Connection connection= DBConnector.connection("tienda_db","root","");
         DSLContext query= DSL.using(connection);
         return query.select().from(DSL.table("categoria")).fetch();
+    }
+    public static Result obtenerProductos(){
+        Connection connection= DBConnector.connection("tienda_db","root","");
+        DSLContext query= DSL.using(connection);
+        return query.select().from(DSL.table("producto")).fetch();
     }
 }
