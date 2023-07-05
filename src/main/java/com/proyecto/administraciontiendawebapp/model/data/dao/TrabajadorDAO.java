@@ -30,6 +30,17 @@ public class TrabajadorDAO {
         Result resultados = query.select().from(DSL.table("trabajador")).where(DSL.field(columnaTabla).eq(dato)).fetch();
         return resultados;
     }
+
+    public static boolean updateInformacion(DSLContext query, Trabajador trabajador) {
+        int result=query.update(DSL.table("trabajador"))
+                .set(DSL.field("correo_electronico"), trabajador.getCorreo())
+                .set(DSL.field("telefono"), trabajador.getTelefono())
+                .set(DSL.field("password"), trabajador.getPassword())
+                .where(DSL.field("rut_trabajador").eq(trabajador.getRut()))
+                .execute();
+        return result==1;
+    }
+
     public Trabajador login(DSLContext query, Trabajador trabajador) {
         String rut = trabajador.getRut();
         String password = trabajador.getPassword();
@@ -44,11 +55,11 @@ public class TrabajadorDAO {
         return new Trabajador(
                 result.getValue(0, "rut_trabajador").toString(),
                 result.getValue(0, "nombre_trabajador").toString(),
-                "",
-                "",
+                result.getValue(0,"cod_tipo_contrato").toString(),
                 result.getValue(0, "telefono").toString(),
                 result.getValue(0, "correo_electronico").toString(),
-                result.getValue(0, "cod_tipo_contrato").toString());
+                result.getValue(0, "cod_tipo_contrato").toString(),
+                result.getValue(0,"password").toString());
     }
 
 }

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <title>Title</title>
 </head>
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb container">
   <ul>
 
     <li><a href="administrador.jsp">Home</a></li>

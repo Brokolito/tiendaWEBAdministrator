@@ -18,22 +18,23 @@ public class loginServlet extends HttpServlet {
 
         String rut=request.getParameter("rut");
         String password=request.getParameter("password");
+        RequestDispatcher requestDispatcher;
         if(!rut.isEmpty() && !password.isEmpty()){
             Trabajador trabajador=new Trabajador(rut,"","","","","",password);
             Trabajador trabajador1=trabajador.login();
             if(trabajador1!=null){
-                RequestDispatcher requestDispatcher=request.getRequestDispatcher("/administrador.jsp");
+                requestDispatcher=request.getRequestDispatcher("/administrador.jsp");
                 request.getSession().setAttribute("usuario",trabajador1);
                 requestDispatcher.forward(request,response);
             }else{
+                requestDispatcher=request.getRequestDispatcher("/index.jsp");
                 request.setAttribute("status","Los datos no coinciden con los registros");
             }
         }
-
         else{
+            requestDispatcher=request.getRequestDispatcher("/index.jsp");
             request.setAttribute("status","Ingrese todos los campos");
         }
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/");
         requestDispatcher.forward(request,response);
     }
 }
