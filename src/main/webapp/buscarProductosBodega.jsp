@@ -33,4 +33,7 @@
   </section>
   </body>
 </main>
+<footer>
+  <p style="text-align: center">&copy; 2023 Marcelo Castro y Javier Luengo. <br>Todos los derechos reservados.</p>
+</footer>
 </html>
