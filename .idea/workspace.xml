@@ -9,15 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfdb7cc0-5d7f-4113-bb43-69c6172cc80c" name="Changes" comment="Se arreglaron funcionalidades, ya que habian ciertos errores">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/AdministracionTiendaWebApp_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/AdministracionTiendaWebApp_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_r2dbc_r2dbc_spi_0_9_1_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jooq_jooq_3_17_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05-07-2023_18_07__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05-07-2023_18_07__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdministracionTiendaWebApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AdministracionTiendaWebApp.iml" afterDir="false" />
-    </list>
+    <list default="true" id="dfdb7cc0-5d7f-4113-bb43-69c6172cc80c" name="Changes" comment="A" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +46,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;history&quot;: [
@@ -234,7 +225,7 @@
       <workItem from="1688150697993" duration="7604000" />
       <workItem from="1688245047322" duration="16208000" />
       <workItem from="1688334056035" duration="42313000" />
-      <workItem from="1688595240346" duration="251000" />
+      <workItem from="1688595240346" duration="828000" />
     </task>
     <task id="LOCAL-00001" summary="Se sube log out, login y otras paginas">
       <created>1688155823986</created>
@@ -390,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688595019719</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="A">
+      <created>1688595510341</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1688595510341</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,6 +423,7 @@
     <MESSAGE value="Se arreglan cosas con respecto a la base de datos nueva" />
     <MESSAGE value="Se arreglo el aspecto de la pagina con respecto al framework picocss" />
     <MESSAGE value="Se arreglaron funcionalidades, ya que habian ciertos errores" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se arreglaron funcionalidades, ya que habian ciertos errores" />
+    <MESSAGE value="A" />
+    <option name="LAST_COMMIT_MESSAGE" value="A" />
   </component>
 </project>
