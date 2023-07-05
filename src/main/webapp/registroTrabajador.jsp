@@ -63,6 +63,9 @@
                 <button type="submit">Submit</button>
             </form>
         </article>
+        <article>
+            <a href="">Registrar Horario</a>
+        </article>
     </section>
 </body>
 </html>

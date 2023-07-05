@@ -10,7 +10,7 @@ import org.jooq.impl.DSL;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 
 import static org.jooq.impl.DSL.name;
@@ -27,11 +27,17 @@ public class ProductoDAO {
                         ,producto.getPrecio(),rutTrabajadorRegistra).execute();
         return result==1;
     }
-    public static Producto obtenerProducto(String columnaTabla, Object dato){
-        Connection connection= DBConnector.connection("tienda_db","root","");
-        DSLContext query= DSL.using(connection);
-        Producto producto = (Producto) query.select().from(DSL.table("Articulo")).where(DSL.field(columnaTabla).eq(dato)).fetch();
-        return producto;
+    public static Result obtenerProductosParametro(String columnaTabla, Object dato) {
+        Connection connection = DBConnector.connection("tienda_db", "root", "");
+        DSLContext query = DSL.using(connection);
+        Result resultado = query.select().from(table("producto")).where(DSL.field(columnaTabla).eq(dato)).fetch();
+        return resultado;
+    }
+    public static Result obtenerProductosDosParametro(String columnaTabla, Object dato, String columnaTabla1, Object dato1) {
+        Connection connection = DBConnector.connection("tienda_db", "root", "");
+        DSLContext query = DSL.using(connection);
+        Result resultado = query.select().from(table("producto")).where(DSL.field(columnaTabla).eq(dato).and(DSL.field(columnaTabla1).eq(dato1))).fetch();
+        return resultado;
     }
     public static boolean registrarCategoria(String nombreCategoria){
         Connection connection= DBConnector.connection("tienda_db","root","");

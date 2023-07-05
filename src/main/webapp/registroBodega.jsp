@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="assets/nav.jsp" %>
 <body>
+${status}
   <section>
     <article>
       <form action="registroBodega" method="post">
@@ -15,8 +16,8 @@
           Direccion bodega:
           <input name="direccionBodega" type="text" id="direccionBodega" required>
         </label>
-        <label for="">
-          <select name="categoria" id="categoria">
+        <label for="trabajadorEncargado">
+          <select name="trabajadorEncargado" id="trabajadorEncargado">
             <option value="0" selected>Elija uno</option>
             <c:forEach items="${trabajadores}" var="trabajador">
               <option value="${trabajador.getValue("rut_trabajador")}">
@@ -26,7 +27,9 @@
           </select>
 
         </label>
+        <button type="submit">Submit</button>
       </form>
+      <a href="registroHorarioBodega">Registrar horario de bodega</a>
     </article>
   </section>
 </body>

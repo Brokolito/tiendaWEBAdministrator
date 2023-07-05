@@ -9,6 +9,7 @@
 <%@include file="assets/nav.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <body>
+<h1>Registro de cliente</h1>
 <h2>${status}</h2>
   <section>
     <article>

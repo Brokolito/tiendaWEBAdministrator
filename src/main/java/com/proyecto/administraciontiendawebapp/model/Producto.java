@@ -26,7 +26,7 @@ public class Producto {
 	}
 
 	public String getCodigo() {
-		return this.codigo;
+		return codigo;
 	}
 
 	public void setCodigo(String codigo) {
@@ -34,7 +34,7 @@ public class Producto {
 	}
 
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -42,7 +42,7 @@ public class Producto {
 	}
 
 	public int getStock() {
-		return this.stock;
+		return stock;
 	}
 
 	public void setStock(int stock) {
@@ -50,7 +50,7 @@ public class Producto {
 	}
 
 	public String getCategoria() {
-		return this.categoria;
+		return categoria;
 	}
 
 	public void setCategoria(String categoria) {
@@ -58,7 +58,7 @@ public class Producto {
 	}
 
 	public Date getFechaVencimiento() {
-		return this.fechaVencimiento;
+		return fechaVencimiento;
 	}
 
 	public void setFechaVencimiento(Date fechaVencimiento) {
@@ -72,6 +72,7 @@ public class Producto {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
+
 	public boolean registraProducto(String rutTrabajadorRegistra){
 		Connection connection= DBConnector.connection("tienda_db","root","");
 		DSLContext query= DSL.using(connection);

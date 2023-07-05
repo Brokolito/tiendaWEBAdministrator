@@ -14,8 +14,10 @@
 </head>
 <nav aria-label="breadcrumb">
   <ul>
+
     <li><a href="administrador.jsp">Home</a></li>
     <% if(request.getSession().getAttribute("usuario")!=null){%>
+      <li><a href="perfil">Profile</a></li>
       <li><a href="logout">Log out</a></li>
     <% } %>
     <li>Administrador pagina</li>

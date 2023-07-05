@@ -9,8 +9,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.jooq.Result;
-
 import java.io.IOException;
 
 @WebServlet(name="registroProductoServlet",value = "/registroProducto")
@@ -31,7 +29,7 @@ public class registroProductoServlet extends HttpServlet {
         request.setAttribute("categorias",ProductoDAO.obtenerCategorias());
         String nombreProducto= request.getParameter("nombreProducto");
         String categoriaProducto=request.getParameter("categoria");
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/registroProducto.jsp");
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/registroProducto.jsp");
         int precioProducto=Integer.parseInt(
                 (!request.getParameter("precio").matches("[0-9]+")
                         || request.getParameter("precio").isEmpty()) ?
