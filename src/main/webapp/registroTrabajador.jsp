@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="assets/nav.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<main class="container">
 <body>
 <h2>${status}</h2>
     <section>
@@ -68,4 +69,5 @@
         </article>
     </section>
 </body>
+</main>
 </html>
