@@ -1,8 +1,5 @@
 package com.proyecto.administraciontiendawebapp.controller;
 
-import com.proyecto.administraciontiendawebapp.model.Producto;
-import com.proyecto.administraciontiendawebapp.model.Trabajador;
-import com.proyecto.administraciontiendawebapp.model.data.DBGenerator;
 import com.proyecto.administraciontiendawebapp.model.data.dao.ProductoDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

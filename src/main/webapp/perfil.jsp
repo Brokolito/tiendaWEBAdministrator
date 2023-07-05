@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="assets/nav.jsp"%>
+<main class="container">
 <body>
 <section>
   <article>
@@ -17,4 +18,5 @@
   </article>
 </section>
 </body>
+</main>
 </html>
