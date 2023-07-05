@@ -11,6 +11,7 @@
 
 
 <body>
+<h1>Registro de productos</h1>
 <h2>${status}</h2>
     <section>
         <article>
@@ -29,7 +30,6 @@
                             </option>
                         </c:forEach>
                     </select>
-
                 </label>
                 <label for="precio">
                     Precio producto

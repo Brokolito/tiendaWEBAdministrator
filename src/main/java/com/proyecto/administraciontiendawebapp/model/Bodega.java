@@ -1,7 +1,7 @@
 package com.proyecto.administraciontiendawebapp.model;
 
-import com.proyecto.administraciontiendawebapp.model.data.dao.BodegaDAO;
 import com.proyecto.administraciontiendawebapp.model.data.DBConnector;
+import com.proyecto.administraciontiendawebapp.model.data.dao.BodegaDAO;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 
@@ -57,5 +57,14 @@ public class Bodega {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-
+	public boolean registrarBodega(){
+		Connection connection= DBConnector.connection("tienda_db","root","");
+		DSLContext query= DSL.using(connection);
+		return BodegaDAO.registarBodega(query,this);
+	}
+	public boolean registrarHorario(){
+		Connection connection= DBConnector.connection("tienda_db","root","");
+		DSLContext query= DSL.using(connection);
+		return BodegaDAO.registrarHorario(query,this);
+	}
 }
