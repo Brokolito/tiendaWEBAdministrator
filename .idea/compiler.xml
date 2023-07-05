@@ -9,8 +9,5 @@
         <module name="AdministracionTiendaWebApp" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="AdministracionTiendaWebApp" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
