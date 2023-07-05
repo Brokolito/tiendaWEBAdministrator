@@ -7,11 +7,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.jooq.DSLContext;
+
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name="buscarProductoServlet",value = "/buscarProducto")
 public class buscarProductoServlet extends HttpServlet {
@@ -49,8 +47,8 @@ public class buscarProductoServlet extends HttpServlet {
                 request.setAttribute("status","No se han encontrado productos, intente nuevamente");
             }
         }else if(!categoriaProducto.isEmpty() && !nombreProducto.isEmpty()){
-            if(!ProductoDAO.obtenerProductosDosParametro("nombre_producto", nombreProducto,"cod_producto",categoriaProducto).isEmpty()) {
-                request.setAttribute("productos", ProductoDAO.obtenerProductosDosParametro("nombre_producto", nombreProducto,"cod_producto",categoriaProducto));
+            if(!ProductoDAO.obtenerProductosDosParametro("nombre_producto", nombreProducto,"cod_categoria",categoriaProducto).isEmpty()) {
+                request.setAttribute("productos", ProductoDAO.obtenerProductosDosParametro("cod_categoria",categoriaProducto,"nombre_producto", nombreProducto));
                 requestDispatcher = request.getRequestDispatcher("/listaProductos.jsp");
             }else{
                 request.setAttribute("status","No se han encontrado productos, intente nuevamente");

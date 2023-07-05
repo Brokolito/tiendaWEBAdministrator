@@ -9,6 +9,7 @@
 <%@include file="assets/nav.jsp"%>
 <main class="container">
 <body>
+<h1>Registrar nuevo horario</h1>
 <h2>${status}</h2>
   <article>
     <form action="registroHorarioBodega" method="post">

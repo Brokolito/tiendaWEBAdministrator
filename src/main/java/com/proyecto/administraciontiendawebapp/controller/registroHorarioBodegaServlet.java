@@ -18,8 +18,7 @@ public class registroHorarioBodegaServlet extends HttpServlet {
         if(request.getSession().getAttribute("usuario")!=null){
             requestDispatcher=request.getRequestDispatcher("/registroHorarioBodega.jsp");
             Bodega bodega=new Bodega("","","","");
-            request.setAttribute("bodegas",BodegaDAO.obtenerBodegas());
-
+            request.setAttribute("bodegas",bodega.obtenerBodegas() );
         }else {
             requestDispatcher=request.getRequestDispatcher("/index.jsp");
         }
@@ -37,7 +36,7 @@ public class registroHorarioBodegaServlet extends HttpServlet {
                 "",
                 (diaComienzo+"-"+diaTermino+"-"+horaComienzo+"-"+horaTermino),
                 "");
-        request.setAttribute("bodegas",BodegaDAO.obtenerBodegas() );
+        request.setAttribute("bodegas",bodega.obtenerBodegas() );
 //        System.out.println(codBodega+" "+diaComienzo+" "+diaTermino+" "+horaComienzo+" "+horaTermino);
         if(!diaComienzo.isEmpty() && !diaTermino.isEmpty() && !horaComienzo.isEmpty() && !horaTermino.isEmpty()){
             System.out.println("a");

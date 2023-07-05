@@ -13,7 +13,7 @@
 
 <main class="container">
 <body>
-<h1>Registro de productos</h1>
+<h1>Búsqueda de productos</h1>
 <h2>${status}</h2>
 <section>
   <article>

@@ -21,9 +21,9 @@
     </tr>
     <c:forEach items="${productos}" var="producto">
         <tr>
-            <td> ${producto.getValue("nombre_producto")}</td>
-            <td> ${producto.getValue("cod_categoria")}</td>
-            <td> ${producto.getValue("precio")}</td>
+            <td> ${producto.nombre}</td>
+            <td> ${producto.categoria}</td>
+            <td> $${producto.precio}</td>
         </tr>
     </c:forEach>
 </table>
