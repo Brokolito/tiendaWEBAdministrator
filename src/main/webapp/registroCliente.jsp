@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <main class="container">
 <body>
-<h1>Registro de cliente</h1>
+<h1>Registrar nuevo cliente</h1>
 <h2>${status}</h2>
   <section>
     <article>

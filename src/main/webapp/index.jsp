@@ -14,6 +14,7 @@
 <main class="container">
     <h2>${status}</h2>
 <body >
+<h1>Inciar sesión Administrador</h1>
 <article>
     <form method="post" action="login">
 

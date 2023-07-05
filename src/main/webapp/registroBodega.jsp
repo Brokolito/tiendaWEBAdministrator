@@ -9,7 +9,8 @@
 <%@include file="assets/nav.jsp" %>
 <main class="container">
 <body>
-${status}
+<h1>Registrar nueva Bodega</h1>
+<h2>${status}</h2>
   <section>
     <article>
       <form action="registroBodega" method="post">

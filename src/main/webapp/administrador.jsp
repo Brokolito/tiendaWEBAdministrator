@@ -12,14 +12,20 @@
 <h1>Administrador</h1>
 <section>
     <article>
-        <li><a href="registroProducto">Agregar productos</a></li>
+        <p>Personas</p>
         <li><a href="registroCliente">Registrar Cliente</a></li>
         <li><a href="registroTrabajador">Registrar Trabajador</a></li>
+        <br>
+        <p>Productos</p>
         <li><a href="registroCategoria"> Registrar Categoria</a></li>
-        <li><a href="registroBodega">Registrar bodega</a></li>
-        <li><a href="registroProducto">Registrar producto</a></li>
-        <li><a href="registroProductoBodega">Registrar producto en bodega</a></li>
+        <li><a href="registroProducto">Agregar productos</a></li>
         <li><a href="buscarProducto">Buscar productos</a></li>
+        <br>
+        <p>Bodega</p>
+        <li><a href="registroBodega">Registrar bodega</a></li>
+        <li><a href="registroProductoBodega">Registrar producto en bodega</a></li>
+        <li><a href="buscarProductosBodega">Buscar productos en bodega</a></li>
+
     </article>
 </section>
 </body>
