@@ -45,7 +45,7 @@ public class TrabajadorDAO {
         String rut = trabajador.getRut();
         String password = trabajador.getPassword();
         Result result = query.select().from(DSL.table("trabajador")).where(
-                    DSL.field("rut_trabajador").eq(rut)).and(DSL.field("password").eq(password)).fetch();
+                DSL.field("rut_trabajador").eq(rut)).and(DSL.field("password").eq(password)).fetch();
         if(result.size()==0){
             return null;
         }
